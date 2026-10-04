@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Casa do Idoso Vovô Nunuca - informações, projetos e cadastro de voluntários."
+    >
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>Casa do Idoso Vovô Nunuca</title>
+</head>
+
+<body>
+
+    <header class="site-header">
+
+        <a href="#inicio" class="site-logo-link" aria-label="Página inicial">
+            <img
+                src="./img/logo.png"
+                alt="Logo da Casa do Idoso Vovô Nunuca"
+                class="site-logo"
+            >
+        </a>
+
+        <h1 class="site-header__title">
+            Casa do Idoso Vovô Nunuca
+        </h1>
+
+        <nav class="site-nav" aria-label="Navegação principal">
+
+            <!-- Controle do menu mobile -->
+            <input
+                type="checkbox"
+                id="menu-toggle"
+                class="site-nav__toggle"
+            >
+
+            <label
+                for="menu-toggle"
+                class="site-nav__hamburger"
+                aria-label="Abrir menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <!-- Menu principal -->
+            <ul class="site-nav__list">
+
+                <li class="site-nav__item">
+                    <a
+                        href="#inicio"
+                        class="site-nav__link"
+                    >
+                        Início
+                    </a>
+                </li>
+
+                <li class="site-nav__item">
+                    <a
+                        href="#sobre"
+                        class="site-nav__link"
+                    >
+                        Sobre Nós
+                    </a>
+                </li>
+
+                <li class="site-nav__item">
+                    <a
+                        href="#servicos"
+                        class="site-nav__link"
+                    >
+                        Serviços e Estrutura
+                    </a>
+                </li>
+
+                <li class="site-nav__item site-nav__item--dropdown">
+
+                    <a
+                        href="#projetos"
+                        class="site-nav__link"
+                    >
+                        Projetos
+                    </a>
+
+                    <ul class="site-nav__submenu">
+
+                        <li>
+                            <a
+                                href="#voluntariado"
+                                class="site-nav__sublink"
+                            >
+                                Voluntariado
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                href="#doacoes"
+                                class="site-nav__sublink"
+                            >
+                                Doações
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                href="#campanhas"
+                                class="site-nav__sublink"
+                            >
+                                Campanhas
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li class="site-nav__item">
+                    <a
+                        href="#cadastro"
+                        class="site-nav__link"
+                    >
+                        Cadastro
+                    </a>
+                </li>
+
+                <li class="site-nav__item">
+                    <a
+                        href="#contato"
+                        class="site-nav__link"
+                    >
+                        Contato
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!--
+        Área principal da SPA.
+
+        O conteúdo das rotas será inserido dinamicamente
+        pelos módulos JavaScript através do elemento #app.
+    -->
+    <main
+        id="app"
+        class="site-main"
+        aria-live="polite"
+    >
+        <section class="content-section">
+
+            <h2>Carregando...</h2>
+
+            <p>
+                Aguarde enquanto a aplicação é carregada.
+            </p>
+
+        </section>
+    </main>
+
+
+    <footer
+        id="contato"
+        class="site-footer content-section"
+    >
+
+        <section>
+
+            <h2>Informações da Instituição</h2>
+
+            <address>
+
+                <p>
+                    <strong>Razão Social:</strong>
+                    Casa Do Idoso Vovo Nunuca
+                </p>
+
+                <p>
+                    <strong>CNPJ:</strong>
+                    02.929.814/0001-30
+                </p>
+
+                <p>
+                    <strong>Endereço:</strong>
+                    Rua Antônio Borges da Silva, nº 435 —
+                    Quintiliano, Santo Antônio do Amparo - MG
+                </p>
+
+                <p>
+                    <strong>CEP:</strong>
+                    37262-000
+                </p>
+
+            </address>
+
+        </section>
+
+        <p>
+            &copy; Casa do Idoso Vovô Nunuca.
+            Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+
+    <!--
+        Ponto de entrada da aplicação.
+
+        O atributo type="module" permite utilizar
+        ES6 Modules com import/export.
+    -->
+    <script
+        type="module"
+        src="./js/app.js"
+    ></script>
+
+</body>
+
+</html>

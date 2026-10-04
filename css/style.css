@@ -1,0 +1,873 @@
+/* =========================================================
+   VARIÁVEIS DO PROJETO
+   ========================================================= */
+
+:root {
+    /* Cores monocromáticas */
+    --cor-900: #111827;
+    --cor-800: #1f2937;
+    --cor-700: #374151;
+    --cor-600: #4b5563;
+    --cor-500: #6b7280;
+    --cor-400: #9ca3af;
+    --cor-300: #d1d5db;
+    --cor-200: #e5e7eb;
+    --cor-100: #f3f4f6;
+    --cor-50: #f9fafb;
+
+    --branco: #ffffff;
+    --cor-erro: #b91c1c;
+
+    /* Tipografia */
+    --fonte-principal: Arial, Helvetica, sans-serif;
+
+    --texto-pequeno: 0.875rem;
+    --texto-normal: 1rem;
+    --texto-medio: 1.125rem;
+    --texto-grande: 1.5rem;
+    --texto-titulo: 2rem;
+
+    /* Espaçamentos */
+    --espaco-1: 0.25rem;
+    --espaco-2: 0.5rem;
+    --espaco-3: 0.75rem;
+    --espaco-4: 1rem;
+    --espaco-5: 1.5rem;
+    --espaco-6: 2rem;
+    --espaco-7: 3rem;
+    --espaco-8: 4rem;
+
+    /* Layout */
+    --largura-conteudo: 1100px;
+
+    /* Bordas */
+    --raio-pequeno: 6px;
+    --raio-medio: 10px;
+    --raio-grande: 16px;
+
+    /* Sombras */
+    --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.06);
+    --sombra-media: 0 8px 30px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--cor-50);
+    color: var(--cor-800);
+    font-family: var(--fonte-principal);
+    font-size: var(--texto-normal);
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
+
+.site-header {
+    display: grid;
+    gap: var(--espaco-4);
+    padding: var(--espaco-4);
+    background-color: var(--branco);
+    border-bottom: 1px solid var(--cor-200);
+    box-shadow: var(--sombra-suave);
+}
+
+.site-logo {
+    width: 90px;
+    margin: 0 auto;
+}
+
+.site-header__title {
+    color: var(--cor-900);
+    font-size: var(--texto-titulo);
+    text-align: center;
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   NAVEGAÇÃO
+   ========================================================= */
+
+.site-nav {
+    position: relative;
+    width: 100%;
+}
+
+
+/* Checkbox utilizado para controlar o menu mobile */
+
+.site-nav__toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* Botão visual do menu hambúrguer */
+
+.site-nav__hamburger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    width: 44px;
+    height: 44px;
+    margin: 0 auto;
+
+    background-color: var(--branco);
+    border: 1px solid var(--cor-300);
+    border-radius: var(--raio-pequeno);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.site-nav__hamburger:hover,
+.site-nav__hamburger:focus {
+    background-color: var(--cor-100);
+    border-color: var(--cor-700);
+}
+
+.site-nav__hamburger span {
+    width: 22px;
+    height: 2px;
+
+    background-color: var(--cor-800);
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+
+/* Menu principal escondido inicialmente no mobile */
+
+.site-nav__list {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--espaco-2);
+
+    margin-top: var(--espaco-3);
+
+    list-style: none;
+}
+
+
+/* Quando o checkbox é marcado, o menu aparece */
+
+.site-nav__toggle:checked ~ .site-nav__list {
+    display: flex;
+}
+
+
+/* Transformação do hambúrguer em X */
+
+.site-nav__toggle:checked + .site-nav__hamburger span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.site-nav__toggle:checked + .site-nav__hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+.site-nav__toggle:checked + .site-nav__hamburger span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* Itens do menu */
+
+.site-nav__item {
+    position: relative;
+}
+
+
+/* Links principais */
+
+.site-nav__link {
+    display: block;
+
+    padding: var(--espaco-3);
+
+    color: var(--cor-700);
+    text-decoration: none;
+    font-weight: bold;
+
+    border-radius: var(--raio-pequeno);
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.site-nav__link:hover,
+.site-nav__link:focus {
+    color: var(--branco);
+    background-color: var(--cor-800);
+}
+
+.site-nav__link:active {
+    transform: translateY(1px);
+}
+
+
+/* Submenu */
+
+.site-nav__submenu {
+    display: none;
+
+    list-style: none;
+
+    margin-top: var(--espaco-1);
+    padding: var(--espaco-2);
+
+    background-color: var(--cor-100);
+
+    border: 1px solid var(--cor-200);
+    border-radius: var(--raio-pequeno);
+}
+
+
+/* Exibição do submenu através de hover ou foco */
+
+.site-nav__item--dropdown:hover > .site-nav__submenu,
+.site-nav__item--dropdown:focus-within > .site-nav__submenu {
+    display: block;
+}
+
+
+/* Links do submenu */
+
+.site-nav__sublink {
+    display: block;
+
+    padding: var(--espaco-2) var(--espaco-3);
+
+    color: var(--cor-700);
+    text-decoration: none;
+
+    border-radius: var(--raio-pequeno);
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.site-nav__sublink:hover,
+.site-nav__sublink:focus {
+    color: var(--branco);
+    background-color: var(--cor-700);
+}
+
+
+/* =========================================================
+   CONTEÚDO PRINCIPAL
+   ========================================================= */
+
+.site-main {
+    width: 100%;
+    max-width: var(--largura-conteudo);
+
+    margin: 0 auto;
+    padding: var(--espaco-6) var(--espaco-4);
+}
+
+
+/* =========================================================
+   SEÇÕES DE CONTEÚDO
+   ========================================================= */
+
+.content-section {
+    margin-bottom: var(--espaco-6);
+    padding: var(--espaco-5);
+
+    background-color: var(--branco);
+
+    border: 1px solid var(--cor-200);
+    border-radius: var(--raio-medio);
+
+    box-shadow: var(--sombra-suave);
+}
+
+.content-section__title {
+    margin-bottom: var(--espaco-4);
+
+    color: var(--cor-900);
+    font-size: var(--texto-grande);
+    line-height: 1.3;
+}
+
+.content-section p {
+    margin-bottom: var(--espaco-3);
+}
+
+
+/* =========================================================
+   LISTAS DE CONTEÚDO
+   ========================================================= */
+
+.content-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-4);
+
+    list-style: none;
+}
+
+.content-list__item {
+    padding: var(--espaco-4);
+
+    background-color: var(--cor-50);
+
+    border: 1px solid var(--cor-200);
+    border-radius: var(--raio-pequeno);
+
+    transition:
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.content-list__item:hover {
+    box-shadow: var(--sombra-suave);
+    transform: translateY(-2px);
+}
+
+.content-list__item h3 {
+    margin-bottom: var(--espaco-2);
+    color: var(--cor-900);
+}
+
+
+/* =========================================================
+   FORMULÁRIO
+   ========================================================= */
+
+.form {
+    width: 100%;
+}
+
+.form__group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--espaco-4);
+
+    margin-bottom: var(--espaco-6);
+    padding: var(--espaco-5);
+
+    background-color: var(--branco);
+
+    border: 1px solid var(--cor-200);
+    border-radius: var(--raio-medio);
+
+    box-shadow: var(--sombra-suave);
+}
+
+.form__legend {
+    margin-bottom: var(--espaco-3);
+
+    color: var(--cor-900);
+    font-size: var(--texto-medio);
+    font-weight: bold;
+}
+
+.form__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-2);
+}
+
+.form__field--full {
+    grid-column: 1 / -1;
+}
+
+.form__label {
+    color: var(--cor-800);
+    font-weight: bold;
+}
+
+
+/* Campos de entrada */
+
+.form__input,
+.form__select,
+.form__textarea {
+    width: 100%;
+
+    padding: var(--espaco-3);
+
+    color: var(--cor-800);
+    background-color: var(--branco);
+
+    border: 1px solid var(--cor-300);
+    border-radius: var(--raio-pequeno);
+
+    font-family: inherit;
+    font-size: var(--texto-normal);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+/* Área de texto */
+
+.form__textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+
+/* Estado de foco */
+
+.form__input:focus,
+.form__select:focus,
+.form__textarea:focus {
+    outline: none;
+
+    border-color: var(--cor-700);
+
+    box-shadow: 0 0 0 3px var(--cor-200);
+}
+
+
+/* Estado válido */
+
+.form__input:valid,
+.form__select:valid,
+.form__textarea:valid {
+    border-color: var(--cor-700);
+}
+
+
+/* Estado inválido */
+
+.form__input:invalid:not(:placeholder-shown),
+.form__select:invalid,
+.form__textarea:invalid:not(:placeholder-shown) {
+    border-color: var(--cor-erro);
+}
+
+
+/* Radio buttons */
+
+.form__radio {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-2);
+}
+
+.form__radio input {
+    accent-color: var(--cor-700);
+}
+
+
+/* Checkbox */
+
+.form__checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--espaco-2);
+}
+
+.form__checkbox input {
+    margin-top: 0.3rem;
+    accent-color: var(--cor-700);
+}
+
+
+/* =========================================================
+   BOTÕES
+   ========================================================= */
+
+.form__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-3);
+}
+
+.form__button {
+    min-height: 44px;
+
+    padding: var(--espaco-3) var(--espaco-5);
+
+    color: var(--branco);
+    background-color: var(--cor-800);
+
+    border: 1px solid var(--cor-800);
+    border-radius: var(--raio-pequeno);
+
+    font-family: inherit;
+    font-size: var(--texto-normal);
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.1s ease,
+        opacity 0.2s ease;
+}
+
+
+/* Hover */
+
+.form__button:hover {
+    background-color: var(--cor-900);
+    border-color: var(--cor-900);
+    box-shadow: var(--sombra-suave);
+}
+
+
+/* Focus */
+
+.form__button:focus {
+    outline: none;
+
+    box-shadow: 0 0 0 3px var(--cor-300);
+}
+
+
+/* Active */
+
+.form__button:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+
+/* Disabled */
+
+.form__button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   RODAPÉ
+   ========================================================= */
+
+.site-footer {
+    display: grid;
+    gap: var(--espaco-4);
+
+    padding: var(--espaco-6) var(--espaco-4);
+
+    color: var(--cor-100);
+    background-color: var(--cor-900);
+}
+
+.site-footer h2 {
+    color: var(--branco);
+    font-size: var(--texto-medio);
+}
+
+.site-footer p {
+    color: var(--cor-300);
+}
+
+
+/* =========================================================
+   BREAKPOINT 1 — 480px
+   ========================================================= */
+
+@media (min-width: 480px) {
+
+    .site-header {
+        padding: var(--espaco-5);
+    }
+
+    .site-logo {
+        width: 100px;
+    }
+
+    .site-header__title {
+        font-size: var(--texto-titulo);
+    }
+
+    .site-main {
+        padding-left: var(--espaco-5);
+        padding-right: var(--espaco-5);
+    }
+
+    .form__actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .form__button {
+        min-width: 150px;
+    }
+}
+
+
+/* =========================================================
+   BREAKPOINT 2 — 768px
+   ========================================================= */
+
+@media (min-width: 768px) {
+
+    /* Cabeçalho utilizando CSS Grid */
+
+    .site-header {
+        display: grid;
+
+        grid-template-columns: auto 1fr;
+
+        grid-template-areas:
+            "logo title"
+            "logo nav";
+
+        column-gap: var(--espaco-5);
+
+        align-items: center;
+    }
+
+    .site-logo {
+        grid-area: logo;
+        width: 100px;
+    }
+
+    .site-header__title {
+        grid-area: title;
+        text-align: left;
+    }
+
+    .site-nav {
+        grid-area: nav;
+    }
+
+
+    /* Esconde o hambúrguer */
+
+    .site-nav__hamburger {
+        display: none;
+    }
+
+
+    /* Menu horizontal */
+
+    .site-nav__list {
+        display: flex;
+
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+
+        gap: var(--espaco-2);
+
+        margin-top: 0;
+    }
+
+
+    /* Submenu no desktop */
+
+    .site-nav__submenu {
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+
+        min-width: 190px;
+
+        margin-top: var(--espaco-1);
+
+        background-color: var(--branco);
+
+        box-shadow: var(--sombra-media);
+
+        z-index: 100;
+    }
+
+
+    /* Formulário em duas colunas */
+
+    .form__group {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form__legend {
+        grid-column: 1 / -1;
+    }
+
+    .form__field--full {
+        grid-column: 1 / -1;
+    }
+
+
+    .content-section {
+        margin-bottom: var(--espaco-7);
+    }
+
+
+    .site-footer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* =========================================================
+   BREAKPOINT 3 — 1024px
+   ========================================================= */
+
+@media (min-width: 1024px) {
+
+    .site-header {
+        padding: var(--espaco-6);
+    }
+
+    .site-main {
+        padding-top: var(--espaco-7);
+        padding-bottom: var(--espaco-7);
+    }
+
+    .site-header__title {
+        font-size: 2.25rem;
+    }
+
+    .content-section {
+        padding: var(--espaco-6);
+    }
+
+    .content-section__title {
+        font-size: 1.75rem;
+    }
+
+    .form__group {
+        gap: var(--espaco-5);
+    }
+
+    .site-nav__list {
+        gap: var(--espaco-3);
+    }
+
+    .site-footer {
+        padding: var(--espaco-7) var(--espaco-6);
+    }
+}
+
+
+/* =========================================================
+   BREAKPOINT 4 — 1200px
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+    .site-header {
+        grid-template-columns: 120px 1fr auto;
+
+        grid-template-areas:
+            "logo title nav";
+
+        padding-left: var(--espaco-8);
+        padding-right: var(--espaco-8);
+    }
+
+    .site-nav__list {
+        justify-content: flex-end;
+        gap: var(--espaco-4);
+    }
+
+    .site-main {
+        max-width: 1200px;
+
+        padding-top: var(--espaco-8);
+        padding-bottom: var(--espaco-8);
+    }
+
+    .content-section {
+        box-shadow: var(--sombra-media);
+    }
+
+    .site-footer {
+        grid-template-columns: 1fr 1fr;
+
+        padding-left: var(--espaco-8);
+        padding-right: var(--espaco-8);
+    }
+}
+
+
+/* =========================================================
+   BREAKPOINT 5 — 1440px
+   ========================================================= */
+
+@media (min-width: 1440px) {
+
+    .site-header {
+        padding-left: 8vw;
+        padding-right: 8vw;
+    }
+
+    .site-main {
+        max-width: 1300px;
+    }
+
+    .content-section {
+        padding: var(--espaco-8);
+    }
+
+    .content-section__title {
+        margin-bottom: var(--espaco-5);
+    }
+
+    .site-footer {
+        padding-left: 8vw;
+        padding-right: 8vw;
+    }
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE — REDUÇÃO DE MOVIMENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}
