@@ -107,6 +107,7 @@ img {
 }
 
 
+ css
 /* =========================================================
    NAVEGAÇÃO
    ========================================================= */
@@ -117,18 +118,7 @@ img {
 }
 
 
-/* Checkbox utilizado para controlar o menu mobile */
-
-.site-nav__toggle {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
-}
-
-
-/* Botão visual do menu hambúrguer */
+/* Botão do menu hambúrguer */
 
 .site-nav__hamburger {
     display: flex;
@@ -141,6 +131,8 @@ img {
     height: 44px;
     margin: 0 auto;
 
+    padding: 0;
+
     background-color: var(--branco);
     border: 1px solid var(--cor-300);
     border-radius: var(--raio-pequeno);
@@ -152,11 +144,24 @@ img {
         border-color 0.2s ease;
 }
 
-.site-nav__hamburger:hover,
-.site-nav__hamburger:focus {
+.site-nav__hamburger:hover {
     background-color: var(--cor-100);
     border-color: var(--cor-700);
 }
+
+
+/* Foco visível para navegação pelo teclado */
+
+.site-nav__hamburger:focus-visible,
+.site-nav__link:focus-visible,
+.site-nav__sublink:focus-visible,
+.site-logo-link:focus-visible {
+    outline: 3px solid var(--cor-700);
+    outline-offset: 3px;
+}
+
+
+/* Barras do hambúrguer */
 
 .site-nav__hamburger span {
     width: 22px;
@@ -167,6 +172,21 @@ img {
     transition:
         transform 0.25s ease,
         opacity 0.25s ease;
+}
+
+
+/* Transformação do hambúrguer em X quando o menu está aberto */
+
+.site-nav__hamburger[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.site-nav__hamburger[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+}
+
+.site-nav__hamburger[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 
@@ -184,25 +204,10 @@ img {
 }
 
 
-/* Quando o checkbox é marcado, o menu aparece */
+/* Menu aberto */
 
-.site-nav__toggle:checked ~ .site-nav__list {
+.site-nav__list--open {
     display: flex;
-}
-
-
-/* Transformação do hambúrguer em X */
-
-.site-nav__toggle:checked + .site-nav__hamburger span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-}
-
-.site-nav__toggle:checked + .site-nav__hamburger span:nth-child(2) {
-    opacity: 0;
-}
-
-.site-nav__toggle:checked + .site-nav__hamburger span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
 }
 
 
@@ -233,7 +238,7 @@ img {
 }
 
 .site-nav__link:hover,
-.site-nav__link:focus {
+.site-nav__link:focus-visible {
     color: var(--branco);
     background-color: var(--cor-800);
 }
@@ -286,10 +291,33 @@ img {
 }
 
 .site-nav__sublink:hover,
-.site-nav__sublink:focus {
+.site-nav__sublink:focus-visible {
     color: var(--branco);
     background-color: var(--cor-700);
 }
+
+
+/* =========================================================
+   NAVEGAÇÃO — DESKTOP
+   ========================================================= */
+
+@media (min-width: 768px) {
+
+    .site-nav__hamburger {
+        display: none;
+    }
+
+    .site-nav__list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        margin-top: 0;
+    }
+
+}
+ 
+
 
 
 /* =========================================================

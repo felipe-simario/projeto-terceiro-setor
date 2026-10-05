@@ -13,43 +13,51 @@ import {
 const app = document.querySelector("#app");
 
 const rotas = {
-"#inicio": templateInicio,
-"#sobre": templateSobre,
-"#servicos": templateServicos,
-"#projetos": templateProjetos,
-"#voluntariado": templateVoluntariado,
-"#doacoes": templateDoacoes,
-"#campanhas": templateCampanhas,
-"#cadastro": templateCadastro,
-"#contato": templateContato
+    "#inicio": templateInicio,
+    "#sobre": templateSobre,
+    "#servicos": templateServicos,
+    "#projetos": templateProjetos,
+    "#voluntariado": templateVoluntariado,
+    "#doacoes": templateDoacoes,
+    "#campanhas": templateCampanhas,
+    "#cadastro": templateCadastro,
+    "#contato": templateContato
 };
 
 export function renderizarRota() {
 
-const rotaAtual = window.location.hash || "#inicio";
+    const rotaAtual = window.location.hash || "#inicio";
+    const template = rotas[rotaAtual];
 
-const template = rotas[rotaAtual];
+    if (!template) {
 
-if (!template) {
+        app.innerHTML = `
+            <section class="content-section">
+                <h2 tabindex="-1">Página não encontrada</h2>
+                <p>
+                    A página solicitada não existe.
+                </p>
+                <a href="#inicio">
+                    Voltar para o início
+                </a>
+            </section>
+        `;
 
-    app.innerHTML = `
-        <section class="content-section">
+        const titulo = app.querySelector("h2");
 
-            <h2>Página não encontrada</h2>
+        if (titulo) {
+            titulo.focus();
+        }
 
-            <p>
-                A página solicitada não existe.
-            </p>
+        return;
+    }
 
-            <a href="#inicio">
-                Voltar para o início
-            </a>
+    app.innerHTML = template();
 
-        </section>
-    `;
+    const titulo = app.querySelector("h2");
 
-    return;
+    if (titulo) {
+        titulo.focus();
+    }
 }
-
-app.innerHTML = template();
-}
+ 

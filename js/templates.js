@@ -23,7 +23,7 @@ return ` <section id="inicio" class="content-section">
 export function templateSobre() {
 return ` <section id="sobre" class="content-section">
 
-        <h2>Sobre Nós</h2>
+        <h2 tabindex="-1">Sobre Nós</h2>
 
         <p>
             A Casa do Idoso Vovô Nunuca é uma instituição filantrópica,
@@ -50,7 +50,7 @@ return ` <section id="sobre" class="content-section">
 export function templateServicos() {
 return ` <section id="servicos" class="content-section">
 
-        <h2>Serviços &amp; Estrutura Operacional</h2>
+        <h2 tabindex="-1">Serviços &amp; Estrutura Operacional</h2>
 
         <ul class="content-list">
 
@@ -93,7 +93,7 @@ return ` <section id="servicos" class="content-section">
 export function templateProjetos() {
 return ` <section id="projetos" class="content-section">
 
-        <h2>Projetos e Ações Sociais</h2>
+        <h2 tabindex="-1">Projetos e Ações Sociais</h2>
 
         <p>
             A Casa do Idoso Vovô Nunuca desenvolve ações voltadas
@@ -135,7 +135,7 @@ return ` <section id="projetos" class="content-section">
 export function templateVoluntariado() {
 return ` <section id="voluntariado" class="content-section">
 
-        <h2>Voluntariado</h2>
+        <h2 tabindex="-1">Voluntariado</h2>
 
         <p>
             O trabalho voluntário é uma importante forma de contribuir
@@ -190,7 +190,7 @@ return ` <section id="voluntariado" class="content-section">
 export function templateDoacoes() {
 return ` <section id="doacoes" class="content-section">
 
-        <h2>Doações</h2>
+        <h2 tabindex="-1">Doações</h2>
 
         <p>
             As doações são fundamentais para auxiliar na manutenção
@@ -227,7 +227,7 @@ return ` <section id="doacoes" class="content-section">
 export function templateCampanhas() {
 return ` <section id="campanhas" class="content-section">
 
-        <h2>Campanhas de Doação</h2>
+        <h2 tabindex="-1">Campanhas de Doação</h2>
 
         <p>
             A instituição realiza campanhas para arrecadar recursos
@@ -250,7 +250,7 @@ return ` <section id="campanhas" class="content-section">
 export function templateCadastro() {
 return ` <section class="content-section">
 
-        <h2>Quero ser voluntário</h2>
+        <h2 tabindex="-1">Quero ser voluntário</h2>
 
         <p>
             Preencha o formulário abaixo para demonstrar seu interesse
@@ -627,7 +627,7 @@ return ` <section class="content-section">
 export function templateContato() {
 return ` <section id="contato" class="content-section">
 
-        <h2>Informações da Instituição</h2>
+        <h2 tabindex="-1">Informações da Instituição</h2>
 
         <address>
             <p>
